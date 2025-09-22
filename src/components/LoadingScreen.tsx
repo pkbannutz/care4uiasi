@@ -11,7 +11,6 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const [showLogo, setShowLogo] = useState(false);
   const [slideUp, setSlideUp] = useState(false);
   const [logoTransition, setLogoTransition] = useState(false);
-  const [logoFadeOut, setLogoFadeOut] = useState(false);
 
   useEffect(() => {
     // Show logo after component mounts
@@ -29,11 +28,6 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       setSlideUp(true);
     }, 2000);
 
-    // Start logo fade out when slide is almost complete
-    const logoFadeTimer = setTimeout(() => {
-      setLogoFadeOut(true);
-    }, 2500);
-
     // Complete loading after slide animation
     const completeTimer = setTimeout(() => {
       onComplete();
@@ -43,7 +37,6 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       clearTimeout(logoTimer);
       clearTimeout(logoTransitionTimer);
       clearTimeout(slideTimer);
-      clearTimeout(logoFadeTimer);
       clearTimeout(completeTimer);
     };
   }, [onComplete]);
@@ -55,24 +48,21 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       }`}
       style={{ backgroundColor: '#f5f4ee' }}
     >
-      {/* Logo positioned exactly where it will be on the homepage */}
       <div 
-        className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-out ${
+        className={`transition-all duration-1000 ease-out ${
           showLogo ? 'opacity-100' : 'opacity-0'
         } ${
-          logoFadeOut ? 'opacity-0' : 'opacity-100'
+          logoTransition 
+            ? 'transform -translate-y-32 scale-75' 
+            : 'transform translate-y-0 scale-100'
         }`}
-        style={{
-          // Position the logo exactly where it will appear on the homepage
-          top: 'calc(50% - 180px)', // Match the exact position from reference
-        }}
       >
         <Image
           src="/images/icons/logo.svg"
           alt="Care4U Logo"
-          width={100}
-          height={100}
-          className="w-24 h-24"
+          width={120}
+          height={120}
+          className="w-30 h-30"
           priority
         />
       </div>
