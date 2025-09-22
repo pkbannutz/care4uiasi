@@ -10,12 +10,18 @@ interface LoadingScreenProps {
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const [showLogo, setShowLogo] = useState(false);
   const [slideUp, setSlideUp] = useState(false);
+  const [logoTransition, setLogoTransition] = useState(false);
 
   useEffect(() => {
     // Show logo after component mounts
     const logoTimer = setTimeout(() => {
       setShowLogo(true);
     }, 100);
+
+    // Start logo transition to final position after 1.5 seconds
+    const logoTransitionTimer = setTimeout(() => {
+      setLogoTransition(true);
+    }, 1500);
 
     // Start slide up animation after 2 seconds
     const slideTimer = setTimeout(() => {
@@ -29,6 +35,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
     return () => {
       clearTimeout(logoTimer);
+      clearTimeout(logoTransitionTimer);
       clearTimeout(slideTimer);
       clearTimeout(completeTimer);
     };
@@ -42,8 +49,12 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       style={{ backgroundColor: '#f5f4ee' }}
     >
       <div 
-        className={`transition-opacity duration-1000 ${
+        className={`transition-all duration-1000 ease-out ${
           showLogo ? 'opacity-100' : 'opacity-0'
+        } ${
+          logoTransition 
+            ? 'transform -translate-y-32 scale-75' 
+            : 'transform translate-y-0 scale-100'
         }`}
       >
         <Image

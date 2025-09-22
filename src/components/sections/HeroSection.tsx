@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { useModal } from '@/context/ModalContext';
@@ -8,6 +8,18 @@ import { HERO_CONTENT } from '@/lib/constants';
 
 export const HeroSection: React.FC = () => {
   const { openModal } = useModal();
+  const [showLogo, setShowLogo] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Show logo when at the top (within 100px), hide when scrolling down
+      setShowLogo(scrollY < 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10">
@@ -26,7 +38,9 @@ export const HeroSection: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         {/* Logo */}
-        <div className="mb-8 flex justify-center">
+        <div className={`mb-8 flex justify-center transition-all duration-500 ease-in-out ${
+          showLogo ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-4'
+        }`}>
           <Image
             src="/images/icons/logo white.svg"
             alt="Care4U Logo"
