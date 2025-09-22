@@ -38,24 +38,24 @@ export const HeroSection: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         {/* Logo */}
-        <div className={`mb-8 flex justify-center transition-all duration-500 ease-in-out ${
+        <div className={`mb-6 flex justify-center transition-all duration-500 ease-in-out ${
           showLogo ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-4'
         }`}>
           <Image
             src="/images/icons/logo white.svg"
             alt="Care4U Logo"
-            width={80}
-            height={80}
-            className="w-20 h-20"
+            width={100}
+            height={100}
+            className="w-24 h-24"
             priority
           />
         </div>
         
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-heading mb-6 leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold font-heading mb-4 leading-tight">
           {HERO_CONTENT.title}
         </h1>
         
-        <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-100 max-w-2xl mx-auto">
+        <p className="text-xl sm:text-2xl lg:text-3xl mb-12 text-gray-100 max-w-2xl mx-auto">
           {HERO_CONTENT.subtitle}
         </p>
         
@@ -63,7 +63,7 @@ export const HeroSection: React.FC = () => {
           variant="primary"
           size="lg"
           onClick={() => openModal('contact')}
-          className="text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          className="text-lg px-10 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
         >
           {HERO_CONTENT.ctaText}
         </Button>
