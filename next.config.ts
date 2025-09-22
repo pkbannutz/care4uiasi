@@ -18,6 +18,17 @@ const nextConfig: NextConfig = {
         destination: 'https://care4uiasi.vercel.app/:path*',
         permanent: true,
       },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.care4uiasi.com',
+          },
+        ],
+        destination: 'https://care4uiasi.com/:path*',
+        permanent: true,
+      },
     ]
   },
   async headers() {
