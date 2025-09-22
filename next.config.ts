@@ -5,6 +5,21 @@ const nextConfig: NextConfig = {
   experimental: {
     serverComponentsExternalPackages: [],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.care4uiasi.vercel.app',
+          },
+        ],
+        destination: 'https://care4uiasi.vercel.app/:path*',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {
