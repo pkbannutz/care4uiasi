@@ -274,7 +274,7 @@ export const ContactModal: React.FC = () => {
                   placeholder="Ex: Consultație specializată, Îngrijire post-operatorie, etc."
                 />
                 <p className="text-gray-500 text-sm mt-1">
-                  Opțional - dacă nu completezi, se va folosi "Altceva"
+                  Opțional - dacă nu completezi, se va folosi &quot;Altceva&quot;
                 </p>
               </div>
             )}
