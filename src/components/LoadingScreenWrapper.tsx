@@ -27,9 +27,10 @@ export default function LoadingScreenWrapper({ children }: LoadingScreenWrapperP
     sessionStorage.setItem('care4u-loading-shown', 'true');
   };
 
-  if (isLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
-
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
+    </>
+  );
 }
