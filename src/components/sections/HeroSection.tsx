@@ -22,7 +22,7 @@ export const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10">
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-primary/10 to-accent/10">
       {/* Background Image */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent">
         <div className="absolute inset-0 bg-black/40" />
@@ -35,22 +35,22 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
       
-      {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        {/* Logo */}
-        <div className={`mb-8 flex justify-center transition-all duration-500 ease-in-out ${
-          showLogo ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-4'
-        }`}>
-          <Image
-            src="/images/icons/logo white.svg"
-            alt="Care4U Logo"
-            width={80}
-            height={80}
-            className="w-20 h-20"
-            priority
-          />
-        </div>
-        
+      {/* Top Logo */}
+      <div className={`relative z-20 flex justify-center pt-8 transition-all duration-500 ease-in-out ${
+        showLogo ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-4'
+      }`}>
+        <Image
+          src="/images/icons/logo white.svg"
+          alt="Care4U Logo"
+          width={160}
+          height={160}
+          className="w-40 h-40"
+          priority
+        />
+      </div>
+      
+      {/* Main Content */}
+      <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto flex-1 flex items-center justify-center">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-heading mb-6 leading-tight">
           {HERO_CONTENT.title}
         </h1>
