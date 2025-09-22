@@ -34,6 +34,11 @@ export const ContactModal: React.FC = () => {
 
   const selectedService = watch('service');
 
+  const handleCloseModal = () => {
+    closeModal();
+    setSubmitStatus('idle');
+  };
+
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
@@ -76,11 +81,7 @@ export const ContactModal: React.FC = () => {
         setSubmitStatus('success');
         reset();
         
-        // Keep modal open for 5 seconds, then auto-close
-        setTimeout(() => {
-          closeModal();
-          setSubmitStatus('idle');
-        }, 5000);
+        // Modal stays open until manually closed
       } else {
         console.error('EmailJS error:', result);
         throw new Error(`Failed to send email. Status: ${result.status}`);
@@ -96,10 +97,7 @@ export const ContactModal: React.FC = () => {
       setSubmitStatus('success');
       reset();
       
-      setTimeout(() => {
-        closeModal();
-        setSubmitStatus('idle');
-      }, 2000);
+      // Modal stays open until manually closed
     } finally {
       setIsSubmitting(false);
     }
@@ -166,8 +164,11 @@ export const ContactModal: React.FC = () => {
                   Dacă nu primești răspuns în 24h, te rog să mă contactezi direct la{' '}
                   <a href="tel:+40721056514" className="underline font-medium">+40 721 056 514</a>
                 </p>
+                <p className="text-green-600 text-sm mb-4 font-medium">
+                  Apasă butonul de mai jos pentru a închide această fereastră.
+                </p>
                 <button
-                  onClick={closeModal}
+                  onClick={handleCloseModal}
                   className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
                 >
                   Închide
