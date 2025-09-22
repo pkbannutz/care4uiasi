@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { useModal } from '@/context/ModalContext';
 import { HERO_CONTENT } from '@/lib/constants';
@@ -24,6 +25,18 @@ export const HeroSection: React.FC = () => {
       
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        {/* Logo */}
+        <div className="mb-8 flex justify-center">
+          <Image
+            src="/images/icons/logo white.svg"
+            alt="Care4U Logo"
+            width={80}
+            height={80}
+            className="w-20 h-20"
+            priority
+          />
+        </div>
+        
         <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-heading mb-6 leading-tight">
           {HERO_CONTENT.title}
         </h1>

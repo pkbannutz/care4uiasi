@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ModalProvider } from "@/context/ModalContext";
+import LoadingScreenWrapper from "@/components/LoadingScreenWrapper";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
   keywords: "îngrijiri medicale, domiciliu, Iași, asistent medical, perfuzii, monitorizare vitală, analize",
   authors: [{ name: "Care4U" }],
   icons: {
-    icon: "/images/icons/logo.svg",
-    shortcut: "/images/icons/logo.svg",
-    apple: "/images/icons/logo.svg",
+    icon: "/images/icons/logo favicon.png",
+    shortcut: "/images/icons/logo favicon.png",
+    apple: "/images/icons/logo favicon.png",
   },
   openGraph: {
     title: "Care4U - Îngrijiri Medicale la Domiciliu în Iași",
@@ -28,9 +29,11 @@ export default function RootLayout({
   return (
     <html lang="ro">
       <body className="antialiased">
-        <ModalProvider>
-          {children}
-        </ModalProvider>
+        <LoadingScreenWrapper>
+          <ModalProvider>
+            {children}
+          </ModalProvider>
+        </LoadingScreenWrapper>
       </body>
     </html>
   );

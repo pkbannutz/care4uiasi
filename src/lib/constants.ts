@@ -10,13 +10,13 @@ export const CONTACT_INFO = {
 export const SERVICES: ServiceType[] = [
   {
     id: 'medical-treatments',
-    title: 'Administrare Perfuzii',
+    title: 'Perfuzie',
     description: 'Administrare sigură și profesională a perfuziilor la domiciliu, cu respectarea tuturor protocoalelor medicale și asigurarea confortului pacientului.',
     icon: 'medical-treatments',
   },
   {
     id: 'health-monitoring',
-    title: 'Monitorizare Vitalică',
+    title: 'Monitorizare parametri vitali',
     description: 'Monitorizarea regulată a semnelor vitale (tensiune arterială, puls, temperatură) pentru a urmări evoluția stării de sănătate.',
     icon: 'health-monitoring',
   },
