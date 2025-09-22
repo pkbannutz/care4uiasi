@@ -10,6 +10,8 @@ export interface ContactFormData {
   email: string;
   phone: string;
   message: string;
+  service: string;
+  customService?: string;
 }
 
 export interface ModalContextType {

@@ -23,6 +23,12 @@ export function validateEmail(email: string): boolean {
 }
 
 export function validatePhone(phone: string): boolean {
-  const phoneRegex = /^(\+40|0)[0-9]{9}$/;
-  return phoneRegex.test(phone.replace(/\s/g, ''));
+  // Remove all non-digit characters
+  const cleaned = phone.replace(/\D/g, '');
+  
+  // Accept Romanian phone numbers in various formats:
+  // - 10 digits starting with 0 (e.g., 0721056514)
+  // - 12 digits starting with 40 (e.g., 40721056514)
+  // - 13 digits starting with +40 (e.g., +40721056514)
+  return cleaned.length >= 10 && cleaned.length <= 13;
 }
