@@ -50,11 +50,11 @@ export const HeroSection: React.FC = () => {
       </div>
       
       {/* Main Content Container */}
-      <div className="relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
             {/* Left Side - Image */}
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+            <div className="w-full lg:w-1/2 flex justify-center">
               <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
                 <Image
                   src="/images/services/Care4u iasi  Schimbare Pansamente header.png"
