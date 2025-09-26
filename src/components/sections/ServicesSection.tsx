@@ -24,12 +24,12 @@ const ServiceIcon: React.FC<{ iconName: string }> = ({ iconName }) => {
 
 const ServiceImage: React.FC<{ serviceId: string }> = ({ serviceId }) => {
   const imageMap: { [key: string]: string } = {
-    'medical-treatments': '/images/services/Care4u%20iasi%20%20Perfuzii.png',
-    'health-monitoring': '/images/services/Care4u%20iasi%20%20Monitorizare%20parametri%20vitali.png',
-    'diagnostics': '/images/services/Care4u%20iasi%20%20Recoltare%20Analize.png',
-    'wound-care': '/images/services/Care4u%20iasi%20%20%C3%8Engrijirea%20Pl%C4%83gilor.png',
-    'post-op-care': '/images/services/care4u%20iasi%20Schimbare%20Pansamente.png',
-    'rehabilitation': '/images/services/Care4u%20iasi%20Suport%20%C3%AEn%20Recuperare.png',
+    'medical-treatments': '/images/services/Care4u iasi  Perfuzii.png',
+    'health-monitoring': '/images/services/Care4u iasi  Monitorizare parametri vitali.png',
+    'diagnostics': '/images/services/Care4u iasi  Recoltare Analize.png',
+    'wound-care': '/images/services/Care4u iasi  Îngrijirea Plăgilor.png',
+    'post-op-care': '/images/services/care4u iasi Schimbare Pansamente.png',
+    'rehabilitation': '/images/services/Care4u iasi Suport în Recuperare.png',
   };
 
   // Custom positioning for each service image
