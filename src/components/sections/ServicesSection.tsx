@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useModal } from '@/context/ModalContext';
 import { SERVICES } from '@/lib/constants';
 
@@ -17,6 +18,29 @@ const ServiceIcon: React.FC<{ iconName: string }> = ({ iconName }) => {
   return (
     <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center text-4xl mb-4 mx-auto shadow-lg">
       {iconMap[iconName] || '🏥'}
+    </div>
+  );
+};
+
+const ServiceImage: React.FC<{ serviceId: string }> = ({ serviceId }) => {
+  const imageMap: { [key: string]: string } = {
+    'medical-treatments': '/images/services/Care4u iasi  Perfuzii.png',
+    'health-monitoring': '/images/services/Care4u iasi  Monitorizare parametri vitali.png',
+    'diagnostics': '/images/services/Care4u iasi  Recoltare Analize.png',
+    'wound-care': '/images/services/Care4u iasi  Îngrijirea Plăgilor.png',
+    'post-op-care': '/images/services/care4u iasi Schimbare Pansamente.png',
+    'rehabilitation': '/images/services/Care4u iasi Suport în Recuperare.png',
+  };
+
+  return (
+    <div className="w-full h-48 mb-6 rounded-xl overflow-hidden">
+      <Image
+        src={imageMap[serviceId] || '/images/services/Care4u iasi  Perfuzii.png'}
+        alt={`Service image for ${serviceId}`}
+        width={400}
+        height={300}
+        className="w-full h-full object-cover"
+      />
     </div>
   );
 };
@@ -43,6 +67,7 @@ export const ServicesSection: React.FC = () => {
               className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-105"
               onClick={() => openModal('service', service.id)}
             >
+              <ServiceImage serviceId={service.id} />
               <ServiceIcon iconName={service.icon} />
               
               <h3 className="text-xl font-semibold text-text mb-4 text-center font-heading">
