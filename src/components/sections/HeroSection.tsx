@@ -50,16 +50,16 @@ export const HeroSection: React.FC = () => {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           {/* Left Side - Image */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-            <div className="w-full max-w-md lg:max-w-lg">
+            <div className="w-full max-w-lg lg:max-w-xl">
               <Image
                 src="/images/services/Care4u iasi  Schimbare Pansamente header.png"
                 alt="Care4U Medical Services"
-                width={500}
-                height={400}
+                width={600}
+                height={450}
                 className="w-full h-auto rounded-xl shadow-2xl"
                 priority
               />
@@ -67,23 +67,27 @@ export const HeroSection: React.FC = () => {
           </div>
           
           {/* Right Side - Text Content */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left text-white">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-heading mb-6 leading-tight">
-              {HERO_CONTENT.title}
-            </h1>
-            
-            <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-100 max-w-2xl mx-auto lg:mx-0">
-              {HERO_CONTENT.subtitle}
-            </p>
-            
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => openModal('contact')}
-              className="text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              {HERO_CONTENT.ctaText}
-            </Button>
+          <div className="w-full lg:w-1/2 text-center lg:text-left text-white flex flex-col justify-center">
+            <div className="max-w-lg mx-auto lg:mx-0">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-heading mb-6 leading-tight">
+                {HERO_CONTENT.title}
+              </h1>
+              
+              <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-100">
+                {HERO_CONTENT.subtitle}
+              </p>
+              
+              <div className="flex justify-center lg:justify-start">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={() => openModal('contact')}
+                  className="text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  {HERO_CONTENT.ctaText}
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

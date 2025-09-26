@@ -32,6 +32,9 @@ const ServiceImage: React.FC<{ serviceId: string }> = ({ serviceId }) => {
     'rehabilitation': '/images/services/Care4u iasi Suport în Recuperare.png',
   };
 
+  // Images that need zooming in (focus on nurse)
+  const needsZoom = ['medical-treatments', 'health-monitoring', 'diagnostics', 'rehabilitation'];
+
   return (
     <div className="w-full h-48 mb-6 rounded-xl overflow-hidden">
       <Image
@@ -39,7 +42,7 @@ const ServiceImage: React.FC<{ serviceId: string }> = ({ serviceId }) => {
         alt={`Service image for ${serviceId}`}
         width={400}
         height={300}
-        className="w-full h-full object-cover"
+        className={`w-full h-full object-cover ${needsZoom.includes(serviceId) ? 'scale-150 object-center' : ''}`}
       />
     </div>
   );
