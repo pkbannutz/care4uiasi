@@ -107,7 +107,9 @@ export const ServicesSection: React.FC = () => {
           {SERVICES.map((service, index) => (
             <div
               key={service.id}
-              ref={(el) => (cardRefs.current[index] = el)}
+              ref={(el) => {
+                cardRefs.current[index] = el;
+              }}
               className={`bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-500 cursor-pointer transform hover:scale-105 ${
                 visibleCards.has(index)
                   ? 'opacity-100 translate-y-0'
