@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useModal } from '@/context/ModalContext';
 import { SERVICES } from '@/lib/constants';
@@ -63,6 +63,33 @@ const ServiceImage: React.FC<{ serviceId: string }> = ({ serviceId }) => {
 
 export const ServicesSection: React.FC = () => {
   const { openModal } = useModal();
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+            if (index !== -1) {
+              setVisibleCards(prev => new Set([...prev, index]));
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="section-padding bg-gray-50">
@@ -77,14 +104,17 @@ export const ServicesSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES.map((service) => (
+          {SERVICES.map((service, index) => (
             <div
               key={service.id}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-105"
+              ref={(el) => (cardRefs.current[index] = el)}
+              className={`bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-500 cursor-pointer transform hover:scale-105 ${
+                visibleCards.has(index)
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-8'
+              }`}
               onClick={() => openModal('service', service.id)}
             >
-              <ServiceIcon iconName={service.icon} />
-              
               <h3 className="text-xl font-semibold text-text mb-4 text-center font-heading">
                 {service.title}
               </h3>
@@ -95,7 +125,9 @@ export const ServicesSection: React.FC = () => {
                 {service.description}
               </p>
               
-              <div className="text-center">
+              <ServiceIcon iconName={service.icon} />
+              
+              <div className="text-center mt-4">
                 <span className="text-accent font-medium hover:text-accent/80 transition-colors">
                   Află mai multe →
                 </span>
