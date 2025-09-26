@@ -32,8 +32,21 @@ const ServiceImage: React.FC<{ serviceId: string }> = ({ serviceId }) => {
     'rehabilitation': '/images/services/Care4u iasi Suport în Recuperare.png',
   };
 
-  // Images that need zooming in (focus on nurse)
-  const needsZoom = ['medical-treatments', 'health-monitoring', 'diagnostics', 'rehabilitation'];
+  // Custom positioning for each service image
+  const getImageClasses = (serviceId: string) => {
+    switch (serviceId) {
+      case 'medical-treatments': // Perfuzie - move higher to show nurse head
+        return 'w-full h-full object-cover scale-150 object-top';
+      case 'health-monitoring': // Monitorizare - move right and zoom out 10%
+        return 'w-full h-full object-cover scale-135 object-right';
+      case 'diagnostics': // Recoltare - move right and zoom out 10%
+        return 'w-full h-full object-cover scale-135 object-right';
+      case 'rehabilitation': // Suport - move lower and right to show floor
+        return 'w-full h-full object-cover scale-150 object-bottom-right';
+      default:
+        return 'w-full h-full object-cover';
+    }
+  };
 
   return (
     <div className="w-full h-48 mb-6 rounded-xl overflow-hidden">
@@ -42,7 +55,7 @@ const ServiceImage: React.FC<{ serviceId: string }> = ({ serviceId }) => {
         alt={`Service image for ${serviceId}`}
         width={400}
         height={300}
-        className={`w-full h-full object-cover ${needsZoom.includes(serviceId) ? 'scale-150 object-center' : ''}`}
+        className={getImageClasses(serviceId)}
       />
     </div>
   );

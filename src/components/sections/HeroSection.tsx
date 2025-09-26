@@ -51,7 +51,7 @@ export const HeroSection: React.FC = () => {
       
       {/* Main Content */}
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-16">
           {/* Left Side - Image */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
             <div className="w-full max-w-lg lg:max-w-xl">
@@ -67,8 +67,8 @@ export const HeroSection: React.FC = () => {
           </div>
           
           {/* Right Side - Text Content */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left text-white flex flex-col justify-center">
-            <div className="max-w-lg mx-auto lg:mx-0">
+          <div className="w-full lg:w-1/2 text-center lg:text-left text-white flex flex-col justify-start lg:justify-center min-h-[450px]">
+            <div className="w-full max-w-lg mx-auto lg:mx-0">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-heading mb-6 leading-tight">
                 {HERO_CONTENT.title}
               </h1>
