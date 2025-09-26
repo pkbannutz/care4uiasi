@@ -35,14 +35,14 @@ const ServiceImage: React.FC<{ serviceId: string }> = ({ serviceId }) => {
   // Custom positioning for each service image
   const getImageClasses = (serviceId: string) => {
     switch (serviceId) {
-      case 'medical-treatments': // Perfuzie - move higher to show nurse head
-        return 'w-full h-full object-cover scale-150 object-top';
+      case 'medical-treatments': // Perfuzie - move higher and zoom out 10%
+        return 'w-full h-full object-cover scale-135 object-top';
       case 'health-monitoring': // Monitorizare - move right and zoom out 10%
         return 'w-full h-full object-cover scale-135 object-right';
-      case 'diagnostics': // Recoltare - move right and zoom out 10%
-        return 'w-full h-full object-cover scale-135 object-right';
-      case 'rehabilitation': // Suport - move lower and right to show floor
-        return 'w-full h-full object-cover scale-150 object-bottom-right';
+      case 'diagnostics': // Recoltare - zoom in 5%
+        return 'w-full h-full object-cover scale-155 object-center';
+      case 'rehabilitation': // Suport - zoom out 10%
+        return 'w-full h-full object-cover scale-135 object-bottom-right';
       default:
         return 'w-full h-full object-cover';
     }
@@ -83,12 +83,13 @@ export const ServicesSection: React.FC = () => {
               className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-105"
               onClick={() => openModal('service', service.id)}
             >
-              <ServiceImage serviceId={service.id} />
               <ServiceIcon iconName={service.icon} />
               
               <h3 className="text-xl font-semibold text-text mb-4 text-center font-heading">
                 {service.title}
               </h3>
+              
+              <ServiceImage serviceId={service.id} />
               
               <p className="text-gray-600 text-center mb-6 line-clamp-3">
                 {service.description}
